@@ -3,17 +3,11 @@
 include('config.php');
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link href="<?php echo $design; ?>/style.css" rel="stylesheet" title="Style" />
 		<title>Edit my personnal information</title>
 	</head>
 	<body>
-		<div class="header">
-			<a href="<?php echo $url_home; ?>"><img src="<?php echo $design; ?>/images/logo.png" alt="Members Area" /></a>
-		</div>
 
 <?php
 //We check if the user is logged
@@ -112,8 +106,8 @@ if (isset($_SESSION['username'])) {
 			$username  = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8');
 			$password  = '';
 			$passverif = '';
-			$email	   = htmlentities($_POST['email'], ENT_QUOTES, 'UTF-8');
-			$avatar	   = htmlentities($_POST['avatar'], ENT_QUOTES, 'UTF-8');
+//			$email	   = htmlentities($_POST['email'], ENT_QUOTES, 'UTF-8');
+//			$avatar	   = htmlentities($_POST['avatar'], ENT_QUOTES, 'UTF-8');
 		}
 		else {
 			//otherwise, we display the values of the database
@@ -121,8 +115,8 @@ if (isset($_SESSION['username'])) {
 			$username  = htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8');
 			$password  = '';
 			$passverif = '';
-			$email	   = htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8');
-			$avatar	   = htmlentities($dnn['avatar'], ENT_QUOTES, 'UTF-8');
+//			$email	   = htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8');
+//			$avatar	   = htmlentities($dnn['avatar'], ENT_QUOTES, 'UTF-8');
 		}
 		//We display the form
 ?>
@@ -133,8 +127,6 @@ if (isset($_SESSION['username'])) {
 					<label for="username">Username</label><input type="text" name="username" id="username" value="<?php echo $username; ?>" readonly/><br />
 					<label for="password">New Password<span class="small">(8 characters min.)</span></label><input type="password" name="password" id="password" value="" /><br />
 					<label for="passverif">New Password<span class="small">(verification)</span></label><input type="password" name="passverif" id="passverif" value="" /><br />
-					<label for="email">Email</label><input type="text" name="email" id="email" value="<?php echo $email; ?>" /><br />
-					<label for="avatar">Avatar<span class="small">(optional)</span></label><input type="text" name="avatar" id="avatar" value="<?php echo $avatar; ?>" /><br />
 					<label for="confirm">Old Password<span class="small"></span></label><input type="password" name="confirm" id="confirm" value="" /><br />
 					<input type="submit" value="Send" />
 				</div>
