@@ -22,14 +22,12 @@ if (isset($_SESSION['username'])) {
 			if ($dn1['user1'] == $_SESSION['userid'] or $dn1['user2'] == $_SESSION['userid']) {
 				//The discussion will be placed in read messages
 				if($dn1['user1'] == $_SESSION['userid']) {
-// 					$u2 = $dn1['user2'];
-					$u2 = $dn1['user1'];
+ 					$u2 = $dn1['user2'];
 					mysqli_query($link, 'update pm set user1read="yes" where id="'.$id.'" and id2="1"');
 					$user_partic = 2;
 				}
 				else {
-// 					$u2 = $dn1['user1'];
-					$u2 = $dn1['user2'];
+ 					$u2 = $dn1['user1'];
 					mysqli_query($link, 'update pm set user2read="yes" where id="'.$id.'" and id2="1"');
 					$user_partic = 1;
 				}
