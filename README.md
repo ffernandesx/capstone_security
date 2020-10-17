@@ -1,12 +1,11 @@
 # Dev: getting started with PHP on Heroku.
-Cybersecurity Capstone Project - University of Maryland - Coursera - oct./2018
+University of Maryland - Cybersecurity Capstone Project - Coursera - Oct/2020
 
 Students:
-  Khaza Newaz Muhammad mailto:knewaz@gmail.com
-  Rodolfo Riyoei Goya mailto:rgoya@uol.com.br
-
+  Felipe Fernandes mailto:fernandesx@hotmail.com
+ 
 ## Deploying
-$ git clone https://github.com/rrgoya/cybersecurity-capstone-project # or clone your own fork
+$ git clone https://github.com/ffernandesx/capstone_security # or clone your own fork
 $ heroku create
 $ git push heroku master
 $ heroku open
