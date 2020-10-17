@@ -1,7 +1,7 @@
 # Dev: getting started with PHP on Heroku.
 University of Maryland - Cybersecurity Capstone Project - Coursera - Oct/2020
 
-Students:
+Student:
   Felipe Fernandes mailto:fernandesx@hotmail.com
  
 ## Deploying
