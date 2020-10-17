@@ -7,6 +7,7 @@ include('config.php');
 <head>
 </head>
 <body>
+	Teste
 <?php
 
 ?>
