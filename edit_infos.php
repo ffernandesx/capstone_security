@@ -19,8 +19,8 @@ if (isset($_SESSION['username'])) {
 			$_POST['username']  = stripslashes($_POST['username']);
 			$_POST['password']  = stripslashes($_POST['password']);
 			$_POST['passverif'] = stripslashes($_POST['passverif']);
-			$_POST['email']	    = stripslashes($_POST['email']);
-			$_POST['avatar']	= stripslashes($_POST['avatar']);
+//			$_POST['email']	    = stripslashes($_POST['email']);
+//			$_POST['avatar']	= stripslashes($_POST['avatar']);
 			$_POST['confirm']   = stripslashes($_POST['confirm']);
 		}
 		//We check if the two passwords are identical
@@ -30,12 +30,14 @@ if (isset($_SESSION['username'])) {
 			//We check if the choosen password is strong enough.
 			if (checkPassword($_POST['password'], $errors)) {
 				//We check if the email form is valid
-				if (preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email'])) {
+
+//				if (preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email'])) {
+				if(1) {
 					//We protect the variables
 					$username = mysqli_real_escape_string($link, $_POST['username']);
 					$password = mysqli_real_escape_string($link, $_POST['password']);
-					$email	= mysqli_real_escape_string($link, $_POST['email']);
-					$avatar   = mysqli_real_escape_string($link, $_POST['avatar']);
+//					$email	= mysqli_real_escape_string($link, $_POST['email']);
+//					$avatar   = mysqli_real_escape_string($link, $_POST['avatar']);
 					$confirm  = mysqli_real_escape_string($link, $_POST['confirm']);
 					//We check if there is no other user using the same username
 					$dn = mysqli_fetch_array(mysqli_query($link, 'select count(*) as nb from users where username="'.$username.'"'));
