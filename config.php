@@ -1,5 +1,5 @@
 <?php
-//We start sessions
+//Start sessions
 session_start();
 
 //Access to Heroku DataBase. Account data hardcoded.
