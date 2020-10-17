@@ -9,10 +9,10 @@ include('config.php');
     </head>
     <body>
 <?php
-//If the user is logged, we log him out
+//If the user is logged, log him out
 if(isset($_SESSION['username']))
 {
-	//We log him out by deleting the username and userid sessions
+	//Log he out by deleting the username and userid sessions
 	unset($_SESSION['username'], $_SESSION['userid']);
 ?>
 <div class="message">You have successfuly been loged out.<br />
@@ -22,10 +22,10 @@ if(isset($_SESSION['username']))
 else
 {
 	$ousername = '';
-	//We check if the form has been sent
+	//Check if the form has been sent
 	if(isset($_POST['username'], $_POST['password']))
 	{
-		//We remove slashes depending on the configuration
+		//Remove slashes depending on the configuration
 		if(get_magic_quotes_gpc())
 		{
 			$ousername = stripslashes($_POST['username']);
@@ -37,15 +37,15 @@ else
 			$username = mysqli_real_escape_string($link, $_POST['username']);
 			$password = $_POST['password'];
 		}
-		//We get the password of the user
+		//Get the password of the user
 		$req = mysqli_query($link, 'select password,id,salt from users where username="'.$username.'"');
 		$dn  = mysqli_fetch_array($req);
 		$password = hash("sha512", $dn['salt'].$password); // Hash with the salt to match database.
-		//We compare the submited password and the real one, and we check if the user exists
+		//Compare the submited password and the real one, and we check if the user exists
 		if ($dn['password'] == $password and mysqli_num_rows($req)>0) {
 			//If the password is good, we dont show the form
 			$form = false;
-			//We save the user name in the session username and the user Id in the session userid
+			//Save the user name in the session username and the user Id in the session userid
 			$_SESSION['username'] = $_POST['username'];
 			$_SESSION['userid'] = $dn['id'];
 ?>
@@ -54,17 +54,17 @@ else
 <?php
 		}
 		else {
-			//Otherwise, we say the password is incorrect.
+			//Otherwise, say the password is incorrect.
 			$form    = true;
 			$message = 'The username or password is incorrect.';
 		}
 	}
 	else $form = true;
 	if($form) {
-		//We display a message if necessary
+		//Display a message if necessary
 		if(isset($message)) echo '<div class="message">'.$message.'</div>';
 
-	//We display the form
+	//Display the form
 ?>
 <div class="content">
     <form action="connexion.php" method="post">
