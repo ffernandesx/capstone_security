@@ -28,9 +28,18 @@ CREATE TABLE `pm` (
   `timestamp` int(10) NOT NULL,
   `user1read` varchar(3) NOT NULL,
   `user2read` varchar(3) NOT NULL
+  `tag` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 
+-- Table structure for table `messagekeys`
+-- 
 
+CREATE TABLE `messagekeys` (
+  `user1` bigint(20) NOT NULL,
+  `user2` bigint(20) NOT NULL,
+  `mskey` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;	
 
 
 Then, you have to edit the config.php file using the right values in the variables.
