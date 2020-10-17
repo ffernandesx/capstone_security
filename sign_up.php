@@ -61,7 +61,7 @@ if(isset($_POST['username'], $_POST['password'], $_POST['passverif']) and $_POST
 					{
 						//Otherwise, we say that an error occured
 						$form	= true;
-						$message = 'An error occurred while signing up QWERTY.';
+						$message = 'An error occurred while signing up.';
 					}
 				}
 				else
