@@ -8,7 +8,6 @@ include('config.php');
 		<title>Sign up</title>
 	</head>
 	<body>
-		Teste3
 <?php
 //Check if the form has been sent
 if(isset($_POST['username'], $_POST['password'], $_POST['passverif']) and $_POST['username'] != '')
