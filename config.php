@@ -2,12 +2,6 @@
 //We start sessions
 session_start();
 
-/******************************************************
-------------------Required Configuration---------------
-Please edit the following variables so the members area
-can work correctly.
-******************************************************/
-
 //Access to Heroku DataBase. Account data hardcoded.
 $heroku_svr = 'eu-cdbr-west-03.cleardb.net:3306'; // Server's URL
 $heroku_usr = 'b57e786cb981f4';						// Root user.
@@ -20,14 +14,10 @@ if (!$link) {
 }
 
 //Webmaster Email
-$mail_webmaster = 'knewaz@gmail.com';
+$mail_webmaster = 'fernandesx@hotmail.com';
 
 //Top site root URL
-$url_root = 'https://fast-scrubland-99567.herokuapp.com/';
-
-/******************************************************
------------------Optional Configuration----------------
-******************************************************/
+$url_root = 'https://fernandesx.herokuapp.com/';
 
 //Home page file name
 $url_home = 'index.php';
