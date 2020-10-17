@@ -10,10 +10,10 @@ include('config.php');
 	<body>
 		Teste3
 <?php
-//We check if the form has been sent
+//Check if the form has been sent
 if(isset($_POST['username'], $_POST['password'], $_POST['passverif']) and $_POST['username'] != '')
 {
-	//We remove slashes depending on the configuration
+	//Remove slashes depending on the configuration
 	if(get_magic_quotes_gpc())
 	{
 		$_POST['username']  = stripslashes($_POST['username']);
@@ -22,35 +22,35 @@ if(isset($_POST['username'], $_POST['password'], $_POST['passverif']) and $_POST
 //		$_POST['email']  	= stripslashes($_POST['email']);
 //		$_POST['avatar']	= stripslashes($_POST['avatar']);
 	}
-	//We check if the two passwords are identical
+	//Check if the two passwords are identical
 	$errors = [];
 	if($_POST['password'] == $_POST['passverif'])
 	{
-		//We check if the choosen password is strong enough.
+		//Check if the choosen password is strong enough.
 		if(checkPassword($_POST['password'], $errors))
 		{
-			//We check if the email form is valid
+			//Check if the email form is valid
 //			if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email']))
 			if(1)
 			{
-				//We protect the variables
+				//Protect the variables
 				$username = mysqli_real_escape_string($link, $_POST['username']);
 				$password = mysqli_real_escape_string($link, $_POST['password']);
 //				$email	  = mysqli_real_escape_string($link, $_POST['email']);
 //				$avatar   = mysqli_real_escape_string($link, $_POST['avatar']);
 				$salt	  = (string)rand(10000, 99999);	     //Generate a five digit salt.
 				$password = hash("sha512", $salt.$password); //Compute the hash of salt concatenated to password.
-				//We check if there is no other user using the same username
+				//Check if there is no other user using the same username
 				$dn = mysqli_num_rows(mysqli_query($link, 'select id from users where username="'.$username.'"'));
 				if($dn == 0)
 				{
-					//We count the number of users to give an ID to this one
+					//Count the number of users to give an ID to this one
 					$dn2 = mysqli_num_rows(mysqli_query($link, 'select id from users'));
 					$id = $dn2 + 1;
-					//We save the informations to the databse
+					//Save the informations to the databse
 					if(mysqli_query($link, 'insert into users(id, username, password, signup_date, salt) values ('.$id.', "'.$username.'", "'.$password.'", "'.time().'","'.$salt.'")'))
 					{
-						//We dont display the form
+						//Sont display the form
 						$form = false;
 ?>
 		<div class="message">You have successfuly been signed up. You can log in.<br />
