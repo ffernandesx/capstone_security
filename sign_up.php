@@ -8,7 +8,7 @@ include('config.php');
 		<title>Sign up</title>
 	</head>
 	<body>
-		Teste2
+		Teste3
 <?php
 //We check if the form has been sent
 if(isset($_POST['username'], $_POST['password'], $_POST['passverif']) and $_POST['username'] != '')
@@ -30,7 +30,8 @@ if(isset($_POST['username'], $_POST['password'], $_POST['passverif']) and $_POST
 		if(checkPassword($_POST['password'], $errors))
 		{
 			//We check if the email form is valid
-			if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email']))
+//			if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email']))
+			if(1)
 			{
 				//We protect the variables
 				$username = mysqli_real_escape_string($link, $_POST['username']);
