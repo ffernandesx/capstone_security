@@ -10,14 +10,14 @@ include('config.php');
 		<div class="content">
 
 <?php
-//We check if the users ID is defined
+//Check if the users ID is defined
 if (isset($_GET['id'])) {
 	$id = intval($_GET['id']);
-	//We check if the user exists
+	//Check if the user exists
 	$dn = mysqli_query($link, 'select username, email, avatar, signup_date from users where id="'.$id.'"');
 	if (mysqli_num_rows($dn)>0) {
 		$dnn = mysqli_fetch_array($dn);
-		//We display the user datas
+		//Display the user datas
 ?>
 This is the profile of "<?php echo htmlentities($dnn['username']); ?>" :
 	<table style="width:500px;">
@@ -27,7 +27,7 @@ This user joined the website on <?php echo date('Y/m/d',$dnn['signup_date']); ?>
 		</tr>
 	</table>
 <?php
-//We add a link to send a pm to the user
+//Add a link to send a pm to the user
 		if (isset($_SESSION['username']))
 ?>
 <br /><a href="new_pm.php?recip=<?php echo urlencode($dnn['username']); ?>" class="big">Send a PM to "<?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?>"</a>
