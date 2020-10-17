@@ -22,14 +22,7 @@ if (isset($_GET['id'])) {
 This is the profile of "<?php echo htmlentities($dnn['username']); ?>" :
 	<table style="width:500px;">
 		<tr>
-			<td>
-<?php
-		if ($dnn['avatar'] != '') echo '<img src="'.htmlentities($dnn['avatar'], ENT_QUOTES, 'UTF-8').'" alt="Avatar" style="max-width:100px;max-height:100px;" />';
-		else echo 'This user dont have an avatar.';
-?>
-			</td>
 			<td class="left"><h1><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></h1>
-Email: <?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?><br />
 This user joined the website on <?php echo date('Y/m/d',$dnn['signup_date']); ?></td>
 		</tr>
 	</table>
