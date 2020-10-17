@@ -12,13 +12,13 @@ Welcome to Cyber Security Capstone
 
 ?>
 
-Felipe Fernandes' System
+<br />Felipe Fernandes' System<br />
 <?php
 if(isset($_SESSION['username'])) {
 	echo ' '.htmlentities($_SESSION['username'], ENT_QUOTES, 'UTF-8');}
 ?>
 
-<br />Welcome<br />
+<br />Main Screen<br />
 <?php
 //If the user is logged, display links to edit his infos, to see his pms and to log out
 if (isset($_SESSION['username'])) {
