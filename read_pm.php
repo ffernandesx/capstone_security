@@ -8,17 +8,17 @@ include('config.php');
 	</head>
 	<body>
 <?php
-//We check if the user is logged
+//Check if the user is logged
 if (isset($_SESSION['username'])) {
-	//We check if the ID of the discussion is defined
+	//Check if the ID of the discussion is defined
 	if (isset($_GET['id'])) {
 		$id = intval($_GET['id']);
-		//We get the title and the narrators of the discussion
+		//Get the title and the narrators of the discussion
 		$req1 = mysqli_query($link, 'select title, user1, user2 from pm where id="'.$id.'" and id2="1"');
 		$dn1  = mysqli_fetch_array($req1);
-		//We check if the discussion exists
+		//Check if the discussion exists
 		if (mysqli_num_rows($req1) == 1) {
-			//We check if the user have the right to read this discussion
+			//Check if the user have the right to read this discussion
 			if ($dn1['user1'] == $_SESSION['userid'] or $dn1['user2'] == $_SESSION['userid']) {
 				//The discussion will be placed in read messages
 				if($dn1['user1'] == $_SESSION['userid']) {
@@ -31,16 +31,16 @@ if (isset($_SESSION['username'])) {
 					mysqli_query($link, 'update pm set user2read="yes" where id="'.$id.'" and id2="1"');
 					$user_partic = 1;
 				}
-				//We get the list of the messages
+				//Get the list of the messages
 				$req2 = mysqli_query($link, 'select pm.timestamp, pm.message, users.id as userid, users.username, users.avatar, pm.user1, pm.user2, pm.tag from pm, users where pm.id="'.$id.'" and users.id=pm.user1 order by pm.id2');
 
-				//We check if the form has been sent
+				//Check if the form has been sent
 				if (isset($_POST['message']) and $_POST['message'] != '') {
 					$message = $_POST['message'];
-					//We remove slashes depending on the configuration
+					//Remove slashes depending on the configuration
 					if (get_magic_quotes_gpc()) $message = stripslashes($message);
 
-					//We protect the variables
+					//Protect the variables
 					$message = mysqli_real_escape_string($link, nl2br(htmlentities($message, ENT_QUOTES, 'UTF-8')));					
 
 					$cipher = "aes-128-gcm";
@@ -54,7 +54,7 @@ if (isset($_SESSION['username'])) {
 						$ciphertext_raw = openssl_encrypt($message, $cipher, $key, $options=OPENSSL_RAW_DATA, $iv, $tag);
 						$hmac = hash_hmac('sha256', $ciphertext_raw, $key, $as_binary=true);
 						$ciphertext = base64_encode($iv.$hmac.$ciphertext_raw);    //store $cipher, $iv, and $tag for decryption later
-						//We send the message and we change the status of the discussion to unread for the recipient
+						//Send the message and we change the status of the discussion to unread for the recipient
 						if (mysqli_query($link, 'insert into pm (id, id2, title, user1, user2, message, timestamp, user1read, user2read, tag)values("'.$id.'", "'.(intval(mysqli_num_rows($req2))+1).'", "", "'.$_SESSION['userid'].'", "", "'.$ciphertext.'", "'.time().'", "", "", "'.$tag.'")')) {
 							if (mysqli_query($link, 'update pm set user'.$user_partic.'read="yes" where id="'.$id.'" and id2="1"')) {
 ?>
@@ -77,7 +77,7 @@ if (isset($_SESSION['username'])) {
 <?php				}
 				}
 				else {
-				//We display the messages ?>
+				//Display the messages ?>
 		<div class="content">
 			<h1><?php echo $dn1['title']; ?></h1>
 			<table class="messages_table">
@@ -109,7 +109,7 @@ if (isset($_SESSION['username'])) {
 							<?php echo $decrypted; ?></td>
 				</tr>
 <?php					}
-						//We display the reply form ?>
+						//Display the reply form ?>
 			</table><br />
 			<h2>Reply</h2>
 			<div class="center">
