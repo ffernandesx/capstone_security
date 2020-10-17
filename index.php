@@ -7,12 +7,12 @@ include('config.php');
 <head>
 </head>
 <body>
-	Teste
+Welcome to Cyber Security Capstone
 <?php
 
 ?>
 
-Hello
+Felipe Fernandes' System
 <?php
 if(isset($_SESSION['username'])) {
 	echo ' '.htmlentities($_SESSION['username'], ENT_QUOTES, 'UTF-8');}
