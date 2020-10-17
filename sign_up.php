@@ -8,9 +8,10 @@ include('config.php');
 		<title>Sign up</title>
 	</head>
 	<body>
+		Teste2
 <?php
 //We check if the form has been sent
-if(isset($_POST['username'], $_POST['password'], $_POST['passverif'], $_POST['email'], $_POST['avatar']) and $_POST['username'] != '')
+if(isset($_POST['username'], $_POST['password'], $_POST['passverif']) and $_POST['username'] != '')
 {
 	//We remove slashes depending on the configuration
 	if(get_magic_quotes_gpc())
@@ -18,8 +19,8 @@ if(isset($_POST['username'], $_POST['password'], $_POST['passverif'], $_POST['em
 		$_POST['username']  = stripslashes($_POST['username']);
 		$_POST['password']  = stripslashes($_POST['password']);
 		$_POST['passverif'] = stripslashes($_POST['passverif']);
-		$_POST['email']  	= stripslashes($_POST['email']);
-		$_POST['avatar']	= stripslashes($_POST['avatar']);
+//		$_POST['email']  	= stripslashes($_POST['email']);
+//		$_POST['avatar']	= stripslashes($_POST['avatar']);
 	}
 	//We check if the two passwords are identical
 	$errors = [];
@@ -46,7 +47,7 @@ if(isset($_POST['username'], $_POST['password'], $_POST['passverif'], $_POST['em
 					$dn2 = mysqli_num_rows(mysqli_query($link, 'select id from users'));
 					$id = $dn2 + 1;
 					//We save the informations to the databse
-					if(mysqli_query($link, 'insert into users(id, username, password, email, avatar, signup_date, salt) values ('.$id.', "'.$username.'", "'.$password.'", "'.$email.'", "'.$avatar.'", "'.time().'","'.$salt.'")'))
+					if(mysqli_query($link, 'insert into users(id, username, password, signup_date, salt) values ('.$id.', "'.$username.'", "'.$password.'", "'.time().'","'.$salt.'")'))
 					{
 						//We dont display the form
 						$form = false;
