@@ -67,7 +67,7 @@ if (isset($_SESSION['username'])) {
 <?php						}
 						}
 						else { ?>
-								<div class="message">An error occurred in message sending.<br />
+								<div class="message">An error occurred in message sending. TESTE<br />
 								<a href="read_pm.php?id=<?php echo $id; ?>">Go to the discussion</a></div>
 <?php					}
 					}
