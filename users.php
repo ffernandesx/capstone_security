@@ -14,7 +14,6 @@ This is the list of members:
 				<tr>
 					<th>Id</th>
 					<th>Username</th>
-					<th>Email</th>
 				</tr>
 
 <?php
@@ -26,7 +25,6 @@ while ($dnn = mysqli_fetch_array($req)) {
 				<tr>
 					<td class="left"><?php echo $dnn['id']; ?></td>
 					<td class="left"><a href="profile.php?id=<?php echo $dnn['id']; ?>"><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></a></td>
-					<td class="left"><?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?></td>
 				</tr>
 
 <?php
